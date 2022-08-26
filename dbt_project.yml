@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'metaplane-dbt'
+name: 'metaplane_dbt'
 version: '1.0.0'
 config-version: 2
 
@@ -12,10 +12,10 @@ profile: 'default'
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
-source-paths: ["models"]
+model-paths: ["models"]
 analysis-paths: ["analysis"]
 test-paths: ["tests"]
-data-paths: ["data"]
+seed-paths: ["data"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
@@ -44,15 +44,27 @@ models:
       +schema: hubspot # leave blank for just the target_schema
     hubspot_source:
       +schema: hubspot_source # leave blank for just the target_schema
+    dbt_project_evaluator:
+      +schema: dbt_project_evaluator
         
 
 vars:
   hubspot_source:
     hubspot_database: raw
     hubspot_schema: hubspot
+    hubspot_email_event_forward_enabled: false
+    hubspot_email_event_print_enabled: false
+    hubspot_email_event_spam_report_enabled: false
+  hubspot:
+    hubspot_email_event_forward_enabled: false
+    hubspot_email_event_print_enabled: false
+    hubspot_email_event_spam_report_enabled: false    
   stripe_source:
     stripe_database: raw
     stripe_schema: stripe
+    stripe__subscription_history: True
+  stripe:
+    stripe__subscription_history: True
   linkedin_pages_source:
-    linkedin_pages_schema: raw
-    linkedin_pages_database: linkedin_company_pages  
+    linkedin_pages_database: raw
+    linkedin_pages_schema: linkedin_company_pages
