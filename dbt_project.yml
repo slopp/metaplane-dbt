@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'my_new_project'
+name: 'metaplane-dbt'
 version: '1.0.0'
 config-version: 2
 
@@ -32,7 +32,27 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  my_new_project:
-      # Applies to all files under models/example/
-      example:
-          materialized: view
+    linkedin_pages:
+      +schema: linkedin_pages # leave blank for just the target_schema
+    linkedin_pages_source:
+      +schema: linkedin_pages_source # leave blank for just the target_schema
+    stripe:
+      +schema: stripe # leave blank for just the target_schema
+    stripe_source:
+      +schema: stripe_source # leave blank for just the target_schema
+    hubspot:
+      +schema: hubspot # leave blank for just the target_schema
+    hubspot_source:
+      +schema: hubspot_source # leave blank for just the target_schema
+        
+
+vars:
+  hubspot_source:
+    hubspot_database: raw
+    hubspot_schema: hubspot
+  stripe_source:
+    stripe_database: raw
+    stripe_schema: stripe
+  linkedin_pages_source:
+    linkedin_pages_schema: raw
+    linkedin_pages_database: linkedin_company_pages  
