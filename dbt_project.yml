@@ -68,3 +68,7 @@ vars:
   linkedin_pages_source:
     linkedin_pages_database: raw
     linkedin_pages_schema: linkedin_company_pages
+
+tests:
+  hubspot:
+    +severity: warn  # all tests
