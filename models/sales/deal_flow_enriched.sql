@@ -8,7 +8,8 @@ SELECT
     df.stage_group,
     hd.deal_name,
     hd.amount,
-    hd.owner_full_name
+    hd.owner_full_name,
+    pipeline_label
 FROM
     {{ ref('deal_flow') }}
     df
