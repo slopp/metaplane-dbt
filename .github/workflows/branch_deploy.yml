@@ -10,7 +10,7 @@ jobs:
         github-token: ${{ secrets.PAT_TOKEN }}
         script: |
           await github.rest.actions.createWorkflowDispatch({
-            owner: 'metaplane',
+            owner: 'david-metaplane',
             repo: 'metaplane-dagster',
             ref: 'main',
             workflow_id: 'branch_deployments.yml',
